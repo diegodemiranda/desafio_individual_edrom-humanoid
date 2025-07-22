@@ -12,16 +12,18 @@ O caminho encontrado precisava ser **ótimo**, não apenas em distância, mas co
 
 ## Estrutura dos arquivos:
 
-### 📄 `simulador.py` (O Simulador)
+### 📄 `simulador.py` (O simulador)
 
-Este arquivo é o ambiente de simulação. Ele é responsável por:
+Este arquivo é o ambiente de simulação.<br> 
+Ele é responsável por:
 -   Criar a janela do jogo e desenhar o campo, o robô, a bola e os obstáculos.
 -   Gerenciar o loop principal do jogo e a interface (botões de Play/Reset).
 -   Chamar a sua função no arquivo `candidato.py` para obter o caminho que o robô deve seguir.
 
-### 👨‍💻 `candidato.py` (Sua Área de Trabalho)
+### 👨‍💻 `candidato.py` (Implementação do algoritmo)
 
-Ele contém uma única função principal: `encontrar_caminho()`. É dentro desta função que toda a lógica explicada abaixo foi implementada:
+Ele contém uma única função principal: `encontrar_caminho()`.<br>
+É dentro desta função que toda a lógica explicada abaixo foi implementada:
 
 #### 1. Arquitetura geral
 
@@ -38,7 +40,7 @@ DIRECOES = [
 ]
 ```
 
--   Movimento completo: O robô pode se mover em 8 direções
+-   Movimento completo: O robô pode se mover em 8 direções 
 -   Custos diferenciados: Movimento reto (custo 10) vs diagonal (custo 14, aproximadamente √2×10)
 <br>
 
@@ -88,6 +90,7 @@ pythondef _calcular_zonas_perigo(self):
 -   **Raio de perigo**: 1 célula ao redor de cada obstáculo
 -   **Custo adicional**: +8 pontos para passar por zona perigosa
 -   **Flexibilidade**: Não proíbe o movimento, apenas desencoraja
+-   **Estruturas de dados eficientes**: e cache de zonas de perigo
 
 **Benefícios**:
 -   Robô evita passar muito próximo aos adversários
@@ -106,8 +109,8 @@ pythondef _calcular_heuristica(self, pos_atual, pos_objetivo):
 
 **Características**:<br>
 -   **Admissível**: Nunca superestima o custo real
--   **Consistente**: Garante optimalidade do A*
--   **Precisa**: Considera movimento em 8 direções
+-   **Consistente**: Garante otimalidade do A*
+-   **Precisa**: Considera movimento em 8 direções otimizada para movimento diagonal
 <br>
 
 #### 7. Eficiência e performance
