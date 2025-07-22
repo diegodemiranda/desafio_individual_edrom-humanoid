@@ -120,8 +120,11 @@ Estruturas de dados eficientes:
 -   ```dict()``` para custos e caminhos O(1) acesso
 
 **Otimizações implementadas**:
--   Verificação precoce de obstáculos
+-   Verificação precoce de obstáculos e se há pelo menos um vizinho livre
+-   Cache de zonas de perigo
+-   Controle de visitados com dicionário de menor custo
 -   Evita processamento de nós já visitados
+-   Tipagem explícita
 -   Reconstrói caminho de forma eficiente
 <br>
 
