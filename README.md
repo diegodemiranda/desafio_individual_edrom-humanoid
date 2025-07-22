@@ -142,7 +142,7 @@ Estruturas de dados eficientes:
 -   Estrutura modular
 
 **Robustez**:
--   Tratamento de casos edge
+-   Tratamento de casos de borda
 -   Validações de entrada
 -   Mensagens de erro informativas
   <br>
