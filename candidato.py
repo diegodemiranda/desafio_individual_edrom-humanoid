@@ -33,16 +33,14 @@ def encontrar_caminho(
     return AStar(largura_grid, altura_grid, obstaculos).encontrar_caminho_otimo(
             pos_inicial, pos_objetivo, tem_bola
         )
-    """
-    Implementação completa do algoritmo A* para RoboCup com múltiplos níveis de complexidade:
-    - Movimento em 8 direções (incluindo diagonais)
-    - Custos diferenciados para rotação
-    - Estados diferentes com/sem bola
-    - Zonas de perigo próximas aos obstáculos
-    """
-    return AStar(largura_grid, altura_grid, obstaculos).encontrar_caminho_otimo(
-        pos_inicial, pos_objetivo, tem_bola
-    )
+
+"""
+        Implementação completa do algoritmo A* para RoboCup com múltiplos níveis de complexidade:
+        - Movimento em 8 direções (incluindo diagonais)
+        - Custos diferenciados para rotação
+        - Estados diferentes com/sem bola
+        - Zonas de perigo próximas aos obstáculos
+"""
 
 class AStar:
     """Implementação do algoritmo A* com suporte a múltiplos custos e estados"""
@@ -60,20 +58,20 @@ class AStar:
     ]
 
     # Custos base de movimento
-    CUSTO_RETO: int = 10  # Movimento horizontal/vertical
-    CUSTO_DIAGONAL: int = 14  # Movimento diagonal (aproximadamente √2 * 10)
+    CUSTO_RETO: int = 10
+    CUSTO_DIAGONAL: int = 14 # (aproximadamente √2 * 10)
 
     # Custos de rotação (penalidades por mudança de direção)
-    CUSTO_CURVA_SUAVE: int = 5  # Reto -> Diagonal ou vice-versa
-    CUSTO_CURVA_FECHADA: int = 15  # Horizontal -> Vertical ou perpendicular
-    CUSTO_INVERSAO: int = 25  # Inversão completa (180°)
+    CUSTO_CURVA_SUAVE: int = 5
+    CUSTO_CURVA_FECHADA: int = 15
+    CUSTO_INVERSAO: int = 25
 
     # Multiplicadores quando o robô tem a bola (mais cuidadoso)
-    MULT_COM_BOLA: float = 2.0  # Multiplica custos de rotação quando tem bola
+    MULT_COM_BOLA: float = 2.0
 
     # Custos de zona de perigo (proximidade com obstáculos)
     CUSTO_ZONA_PERIGO: int = 8  # Custo adicional para células próximas a obstáculos
-    RAIO_PERIGO: int = 1  # Raio de células consideradas perigosas
+    RAIO_PERIGO: int = 2  # Raio de células consideradas perigosas
 
     def __init__(self, largura: int, altura: int, obstaculos: List[Tuple[int, int]]):
         self.largura = largura
