@@ -1,7 +1,7 @@
 # Desafio Individual EDROM - Robô A* 🤖
 
 
-## 🎯 O desafio:
+## O desafio:
 
 O objetivo é programar a "inteligência" de um robô de futebol para que ele navegue em um campo 2D. 
 A tarefa consistiu em duas fases:
@@ -10,9 +10,9 @@ A tarefa consistiu em duas fases:
 
 O caminho encontrado precisava ser **ótimo**, não apenas em distância, mas considerando diversas outras variáveis de custo que simulam um ambiente de jogo real.
 
-## 🏗️ Estrutura dos arquivos:
+## Estrutura dos arquivos:
 
-#### 🖥️ `simulador.py` (O simulador)
+#### `simulador.py` (O simulador)
 
 Este arquivo é o ambiente de simulação.<br> 
 Ele é responsável por:
@@ -20,19 +20,19 @@ Ele é responsável por:
 -   Gerenciar o loop principal do jogo e a interface (botões de Play/Reset).
 -   Chamar a sua função no arquivo `candidato.py` para obter o caminho que o robô deve seguir.
 
-#### 👨‍💻 `candidato.py` (Implementação do algoritmo)
+#### `candidato.py` (Implementação do algoritmo)
 
 Ele contém uma única função principal: `encontrar_caminho()`.<br>
 É dentro desta função que toda a lógica explicada abaixo foi implementada:
 
-#### 🚧 1. Arquitetura geral
+#### 1. Arquitetura geral
 
 **Classe AStar**: Encapsula toda a lógica do algoritmo, mantendo o código organizado e reutilizável
 Separação de responsabilidades: Cada método tem uma função específica e bem definida
 Configurações centralizadas: Constantes definidas no início facilitam ajustes e manutenção
 <br>
 
-#### 🕹️ 2. Sistema de movimentação (8 Direções)
+#### 2. Sistema de movimentação (8 Direções)
 ```python
 DIRECOES = [
     (0, 1), (1, 0), (0, -1), (-1, 0),  # Cardinais
@@ -44,7 +44,7 @@ DIRECOES = [
 -   Custos diferenciados: Movimento reto (custo 10) vs diagonal (custo 14, aproximadamente √2×10)
 <br>
 
-#### 💰 3. Sistema de custos de rotação
+#### 3. Sistema de custos de rotação
 O algoritmo implementa um sistema sofisticado de penalização por rotação:
 
 ```python
@@ -63,7 +63,7 @@ Por que isso é importante:<br>
 -   Prioriza caminhos mais suaves e naturais
 <br>
 
-####  ⚽ 4. Estados diferenciados (com/sem bola)
+#### 4. Estados diferenciados (com/sem bola)
 ```python
 pythonif tem_bola:
     custo_rotacao *= self.MULT_COM_BOLA  # Multiplica por 2.0
@@ -80,7 +80,7 @@ pythonif tem_bola:
 -   Prioriza estabilidade para não perder a bola
 <br>
 
-#### ⚠️ 5. Zonas de perigo
+#### 5. Zonas de perigo
 ```python
 pythondef _calcular_zonas_perigo(self):
 # Marca células próximas aos obstáculos como perigosas
@@ -98,7 +98,7 @@ pythondef _calcular_zonas_perigo(self):
 -   Permite passagem em situações necessárias
 <br>
 
-#### 🧠 6. Heurística otimizada
+#### 6. Heurística otimizada
 ```python
 pythondef _calcular_heuristica(self, pos_atual, pos_objetivo):
     # Distância diagonal otimizada
@@ -113,7 +113,7 @@ pythondef _calcular_heuristica(self, pos_atual, pos_objetivo):
 -   **Precisa**: Considera movimento em 8 direções otimizada para movimento diagonal
 <br>
 
-#### 📊 7. Eficiência e performance
+#### 7. Eficiência e performance
 Estruturas de dados eficientes:
 -   ```heapq``` para fila de prioridade O(log n)
 -   ```set()``` para obstáculos e visitados O(1) lookup
@@ -128,7 +128,7 @@ Estruturas de dados eficientes:
 -   Reconstrói caminho de forma eficiente
 <br>
 
-#### ‼️ 8. Tratamento de casos especiais
+#### 8. Tratamento de casos especiais
 **Situações tratadas**:<br>
 -   Sem caminho possível: Retorna lista vazia
 -   Obstáculos no caminho: Desvia automaticamente
@@ -136,7 +136,7 @@ Estruturas de dados eficientes:
 -   Limites do campo: Validação de boundaries
 -   <br>
 
-#### 📋 9. Melhores práticas aplicadas
+#### 9. Melhores práticas aplicadas
 **Código limpo**:
 -   Nomes descritivos para variáveis e métodos
 -   Documentação clara em cada função
@@ -153,7 +153,7 @@ Estruturas de dados eficientes:
 -   Mensagens de erro informativas
   <br>
 
-#### 💡 10. Como o algoritmo resolve o desafio
+#### 10. Como o algoritmo resolve o desafio
 
 **Fase 1 (Ir até a bola)**:<br>
 ```tem_bola = False```
@@ -168,7 +168,7 @@ Estruturas de dados eficientes:
 -   Maior cuidado com zonas de perigo
 
 
-## 👨‍🔬 Como testar:
+## Como testar:
 
 1.  **Instale as dependências:** Certifique-se de que você tem Python e a biblioteca Pygame instalados.
     ```bash
